@@ -21,10 +21,10 @@ jobs:
     strategy:
       fail-fast: false
       matrix:
-        xcode: ['16.2', '16.1', '15.2']
+        xcode: ['16.2', '15.2']
         macos: ['macos-latest', 'macos-14']
-        scheme: ['Earendil']
-        command: ['test']
+        scheme: ['VerticalBar', 'RightBar', 'LeftBar']
+        command: ['build']
         platform: ['macOS', 'mac-catalyst']
 #        platform: ['macOS', 'iOS', 'tvOS', 'watchOS', 'mac-catalyst']
 
@@ -39,8 +39,8 @@ jobs:
       uses: actions/checkout@v2
     - name: Check xcodebuild version
       run: xcodebuild -version
-    - name: Check xcode embedded SDKs
-      run: xcodebuild -showsdks
+#    - name: Check xcode embedded SDKs
+#      run: xcodebuild -showsdks
     - name: Show buildable schemes
       run: xcodebuild -list
     - name: Show eligible build destinations for ${{ matrix.scheme }}
